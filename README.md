@@ -12,7 +12,7 @@ QuickDictate は、OpenAI Realtime API を利用して話した内容をその�
 - 🎚️ 入力音量を視覚的に確認できる音声入力レベル（VU）メーター
 - ⚙️ API キー、ASR モデル、VAD の閾値、デバッグモードなどを環境変数ファイル `.env` で一括管理
 - 🪪 `DEBUG_MODE=true` のときだけ表示されるデバッグログパネル機能
-- 🎨 UI のスタイルは、TailwindCSS を使用しており、カスタマイズが容易
+- 🎨 UI のスタイルは、Tailwind CSS を使用しており、カスタマイズが容易
 
 ## 必要環境
 
