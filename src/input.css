@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@theme {
+    --font-body: "Noto Sans JP Variable", sans-serif;
+    --font-pre: "Source Code Pro Variable", monospace;
+}
+
+@layer components {
+    html {
+        @apply scroll-smooth;
+    }
+
+    body {
+        @apply bg-white font-body flex flex-col min-h-dvh;
+    }
+
+    header {
+        @apply bg-gray-900 text-white px-8 py-4;
+
+        h1 {
+            @apply text-xl font-semibold text-white text-center sm:text-2xl;
+        }
+    }
+
+    main {
+        @apply px-8 mx-auto w-full max-w-7xl mt-8;
+    }
+
+    aside {
+        @apply px-8 py-16 mx-auto w-full max-w-7xl mt-8;
+    }
+
+    footer {
+        @apply px-8 py-8 flex justify-center items-center flex-wrap gap-x-8 gap-y-4 bg-gray-900 text-white mt-auto;
+    }
+
+    summary {
+        @apply flex items-center gap-1;
+    }
+
+    button {
+        @apply inline-flex items-center gap-x-2 rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2 cursor-pointer;
+
+        &#start {
+            @apply bg-red-700 hover:bg-red-800 focus-visible:outline-indigo-600;
+            
+            &[disabled] {
+                @apply bg-gray-400 cursor-default;
+            }
+        }
+        &#stop {
+            @apply bg-gray-700 hover:bg-gray-800 focus-visible:outline-indigo-600;
+
+            &[disabled] {
+                @apply bg-gray-400 cursor-default;
+            }
+        }
+        &#copy {
+            @apply bg-indigo-600 hover:bg-indigo-700 focus-visible:outline-indigo-600;
+
+            &[disabled] {
+                @apply bg-gray-400 cursor-default;
+            }
+        }
+        &#clear {
+            @apply bg-indigo-600 hover:bg-indigo-700 focus-visible:outline-indigo-600;
+
+            &[disabled] {
+                @apply bg-gray-400 cursor-default;
+            }
+        }
+    }
+
+    #live {
+        @apply text-base/6 border border-gray-400 rounded-md p-4 min-h-100 max-h-screen overflow-auto whitespace-pre-wrap scroll-smooth;
+    }
+
+    #debug {
+        @apply font-pre text-sm border border-gray-400 rounded-md p-4 overflow-auto max-h-80 whitespace-pre-wrap bg-gray-50 scroll-smooth;
+    }
+
+    .description {
+        @apply text-base text-gray-700 mt-4;
+    }
+
+    .meter {
+        @apply flex items-center bg-green-200 w-60 h-2 rounded-full overflow-hidden relative;
+    }
+
+    .bar {
+        @apply h-full w-auto transition-all ease-linear duration-50 bg-green-600;
+    }
+}
