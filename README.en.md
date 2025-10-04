@@ -69,4 +69,4 @@ Open `http://localhost:3000` in your browser. Click the “Start Dictation” bu
 
 ## Notes
 
-Using `gpt-4o-mini-transcribe` incurs usage costs. If you continuously transcribe long passages, your charges can grow quickly, so monitor your usage carefully.
+Using `gpt-4o-mini-transcribe` or `gpt-4o-mini-realtime-preview` incurs usage costs. If you continuously transcribe long passages, your charges can grow quickly, so monitor your usage carefully.
