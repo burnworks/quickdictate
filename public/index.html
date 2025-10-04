@@ -149,6 +149,15 @@
         const btnCopy = $("#copy");
         const btnClear = $("#clear");
         const vuBar = $("#vu");
+        const defaultRealtimeModel = "gpt-4o-mini-realtime-preview";
+
+        const fetchAsrConfig = async () => {
+            const res = await fetch("/api/asr-config");
+            if (!res.ok) {
+                throw new Error("ASR config fetch failed");
+            }
+            return res.json();
+        };
 
         const render = () => {
             const combined = [accumulating, partial].filter(Boolean).join("\n");
@@ -183,10 +192,9 @@
         };
 
         // 入力音声をそのまま出力するための設定
-        const sendSessionConfig = async () => {
+        const sendSessionConfig = async (providedConf) => {
             try {
-                const confRes = await fetch("/api/asr-config");
-                const conf = await confRes.json();
+                const conf = providedConf ?? await fetchAsrConfig();
 
                 const sessUpdate = {
                     type: "session.update",
@@ -224,9 +232,11 @@
                 const client_secret = JSON.parse(tokTxt).client_secret;
                 if (!client_secret?.value) throw new Error("client_secret missing");
 
+                const conf = await fetchAsrConfig();
+
                 pc = new RTCPeerConnection();
                 dataChannel = pc.createDataChannel("oai-events");
-                dataChannel.onopen = () => { dbg("DataChannel open"); sendSessionConfig(); };
+                dataChannel.onopen = () => { dbg("DataChannel open"); sendSessionConfig(conf); };
                 dataChannel.onmessage = (e) => {
                     const raw = typeof e.data === "string" ? e.data : "[binary]";
                     dbg("DC message:", raw.slice(0, 200));
@@ -260,8 +270,10 @@
 
                 const offer = await pc.createOffer();
                 await pc.setLocalDescription(offer);
+                const realtimeModel = conf?.realtime_model ?? conf?.realtimeModel ?? defaultRealtimeModel;
+                const realtimeUrl = `https://api.openai.com/v1/realtime?model=${encodeURIComponent(realtimeModel)}`;
                 const sdpResponse = await fetch(
-                    "https://api.openai.com/v1/realtime?model=gpt-4o-mini-realtime-preview",
+                    realtimeUrl,
                     {
                         method: "POST",
                         headers: {

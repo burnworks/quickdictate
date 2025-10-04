@@ -33,13 +33,14 @@ npm install
 Copy `.env.sample` to `.env` and fill in the required values.
 
 ```env
-OPENAI_API_KEY=your-api-key # Required
-ASR_MODEL=gpt-4o-mini-transcribe # You can also specify gpt-4o-transcribe
+OPENAI_API_KEY=your-api-key                  # Required
+ASR_MODEL=gpt-4o-mini-transcribe             # You can also specify gpt-4o-transcribe
 ASR_LANGUAGE=ja
-ASR_VAD_THRESHOLD=0.5   # Set speech detection sensitivity in the 0–1 range
-ASR_VAD_SILENCE_MS=1000 # How many milliseconds of silence trigger a line break
-PORT=3000               # Server listen port (optional)
-DEBUG_MODE=false        # Set true to show debug logs
+ASR_VAD_THRESHOLD=0.5                        # Set speech detection sensitivity in the 0–1 range
+ASR_VAD_SILENCE_MS=1000                      # How many milliseconds of silence trigger a line break
+PORT=3000                                    # Server listen port (optional)
+REALTIME_MODEL=gpt-4o-mini-realtime-preview  # Model used for real-time speech recognition
+DEBUG_MODE=false                             # Set true to show debug logs
 ```
 
 ### 3. Build Tailwind CSS (only when you change styles)

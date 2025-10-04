@@ -35,13 +35,14 @@ npm install
 `.env.sample` をコピーして `.env` を作成し、必要な値を設定します。
 
 ```env
-OPENAI_API_KEY=your-api-key # 設定必須
-ASR_MODEL=gpt-4o-mini-transcribe # gpt-4o-transcribe を指定することも可能
+OPENAI_API_KEY=your-api-key                  # 設定必須
+ASR_MODEL=gpt-4o-mini-transcribe             # gpt-4o-transcribe を指定することも可能
 ASR_LANGUAGE=ja
-ASR_VAD_THRESHOLD=0.5   # 0〜1 の範囲で音声検出感度を設定
-ASR_VAD_SILENCE_MS=1000 # 無音が何ミリ秒続いたら改行するか
-PORT=3000               # サーバーの待受ポート（任意）
-DEBUG_MODE=false        # true にするとデバッグログを表示
+ASR_VAD_THRESHOLD=0.5                        # 0〜1 の範囲で音声検出感度を設定
+ASR_VAD_SILENCE_MS=1000                      # 無音が何ミリ秒続いたら改行するか
+PORT=3000                                    # サーバーの待受ポート（任意）
+REALTIME_MODEL=gpt-4o-mini-realtime-preview  # 音声リアルタイム認識で使うモデル
+DEBUG_MODE=false                             # true にするとデバッグログを表示
 ```
 
 ### 3. Tailwind CSS のビルド（スタイルを変更した場合のみ実行）

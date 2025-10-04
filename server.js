@@ -16,6 +16,7 @@ const toFiniteNumber = (raw) => {
 };
 
 const debugMode = String(process.env.DEBUG_MODE || "false").toLowerCase() === "true";
+const realtimeModel = (process.env.REALTIME_MODEL || "gpt-4o-mini-realtime-preview").trim();
 
 app.get("/api/debug-config", (_req, res) => {
     res.json({ debug: debugMode });
@@ -35,7 +36,7 @@ app.get("/api/realtime-token", async (_req, res) => {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                model: "gpt-4o-realtime-preview",
+                model: realtimeModel,
             }),
         });
         if (!r.ok) {
@@ -61,6 +62,7 @@ app.get("/api/asr-config", (_req, res) => {
 
     res.json({
         model: process.env.ASR_MODEL || "gpt-4o-mini-transcribe",
+        realtime_model: realtimeModel,
         language: process.env.ASR_LANGUAGE || "ja",
         vad: {
             threshold,
