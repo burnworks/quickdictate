@@ -1,7 +1,7 @@
 {
   "name": "quickdictate",
   "type": "module",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Realtime speech-to-text dictation tool powered by the OpenAI Realtime API.",
   "license": "MIT",
   "author": "burnworks",
