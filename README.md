@@ -74,3 +74,7 @@ npm run start
 ## 注意点
 
 `gpt-4o-mini-transcribe` や `gpt-4o-mini-realtime-preview` モデルの利用には従量制でコストがかかります。あまり長文を変換し続けていると請求金額が大きくなる可能性がありますので十分注意してください。
+
+## 参考記事
+
+- [音声からテキストをリアルタイムに生成するツールを作ってみた - WWW WATCH](https://hyper-text.org/archives/2025/10/quickdictate-realtime-speech-to-text/)
