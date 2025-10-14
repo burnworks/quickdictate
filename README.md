@@ -67,22 +67,32 @@ npm run start
 
 ## Docker での実行方法
 
-ローカルに Node.js を用意せずに利用したい場合は、Docker イメージをビルドしてコンテナとして実行できます。  
+ローカルに Node.js 環境を用意せずに利用したい場合は、Docker イメージをビルドしてコンテナとして実行できます。  
 事前に [Docker Desktop](https://www.docker.com/products/docker-desktop/) などの実行環境をインストールしてください。
 
-1. `.env` を用意する  
-   既存の手順と同様に `.env.sample` から `.env` を作成し、`OPENAI_API_KEY` など必要な値を設定します。
-2. イメージをビルドする  
-   ```bash
-   docker build -t quickdictate .
-   ```
-3. コンテナを起動する  
-   ```bash
-   docker run --rm --env-file .env -p 3000:3000 quickdictate
-   ```
-   `PORT` を変更したい場合は `.env` 側の値を更新し、`-p <ホスト側ポート>:<PORT>` のようにマッピングを調整してください。
-4. ブラウザでアクセスする  
-   ローカル環境と同様に `http://localhost:3000`（または割り当てたポート）にアクセスして利用できます。
+### 1. `.env` を用意する
+
+既存の手順と同様に `.env.sample` から `.env` を作成し、`OPENAI_API_KEY` など必要な値を設定します。
+
+### 2. イメージをビルドする
+
+以下のコマンドで Docker イメージをビルドします。
+
+```bash
+docker build -t quickdictate .
+```
+### 3. コンテナを起動する
+
+以下のコマンドで Docker コンテナを起動してください。  
+`PORT` を変更したい場合は `.env` 側の値を更新し、`-p <ホスト側ポート>:<PORT>` のようにマッピングを調整してください。
+
+```bash
+docker run --rm --env-file .env -p 3000:3000 quickdictate
+```
+
+### 4. ブラウザでアクセスする
+
+ブラウザで `http://localhost:3000`（または割り当てたポート）にアクセスすれば利用できます。
 
 ## 使い方のヒント
 
